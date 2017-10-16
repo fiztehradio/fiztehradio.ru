@@ -29,9 +29,7 @@ var path = {
 			works: 'src/img/works/**/*.*',
 			others: 'src/img/*.*'
 		},
-		php: 'src/*.php',
-		telegramPhp: 'src/telegram-php/**/*.php',
-		yaPhp: 'src/ya-php/**/*.*'
+		php: 'src/php/*.php'
 	},
 	assets: { // Активы (от других разработчиков)
 		html: 'assets/*.html',
@@ -51,16 +49,12 @@ var path = {
 			works: 'build/img/works/',
 			others: 'build/img/'
 		},
-		php: 'build/',
-		telegramPhp: 'build/AAG7MNSgDlrtHKwQ1wa3xHmcGUwAgdIVCE8/',
-		yaPhp: 'build/ya/'
+		php: 'build/php/'
 	},
 	watch: { // watch
 		html: 'src/*.html',
 		js: 'src/js/script.js',
-		php: 'src/*.php',
-		telegramPhp: 'src/telegram-php/**/*.php',
-		yaPhp: 'src/ya-php/**/*.*',
+		php: 'src/php/*.php',
 		style: 'src/style/*.scss',
 		img: 'src/img/**/*.*'
 	},
@@ -102,18 +96,6 @@ gulp.task('build-js', function () {
 gulp.task('build-php', function () {
 	gulp.src(path.src.php)
 		.pipe(gulp.dest(path.build.php))
-		.pipe(reload({stream: true}));
-});
-
-gulp.task('build-telegram-php', function () {
-	gulp.src(path.src.telegramPhp)
-		.pipe(gulp.dest(path.build.telegramPhp))
-		.pipe(reload({stream: true}));
-});
-
-gulp.task('build-ya-php', function () {
-	gulp.src(path.src.yaPhp)
-		.pipe(gulp.dest(path.build.yaPhp))
 		.pipe(reload({stream: true}));
 });
 
@@ -324,9 +306,9 @@ gulp.task('build-assets', function () {
 		.pipe(reload({stream: true}));
 });
 
-// gulp.task('php', function() {
-// 	php.server({ base: 'build', port: 8010, keepalive: true});
-// });
+gulp.task('php', function() {
+	php.server({ base: 'build', port: 8010, keepalive: true});
+});
 
 gulp.task('watch', function () {
 	gulp.watch([path.watch.html], function (event, cb) {
@@ -338,12 +320,6 @@ gulp.task('watch', function () {
 	gulp.watch([path.watch.js], function (event, cb) {
 		gulp.start('build-js');
 	});
-	gulp.watch([path.watch.telegramPhp], function (event, cb) {
-		gulp.start('build-telegram-php');
-	});
-	gulp.watch([path.watch.yaPhp], function (event, cb) {
-		gulp.start('build-ya-php');
-	});
 	gulp.watch([path.watch.php], function (event, cb) {
 		gulp.start('build-php');
 	});
@@ -354,10 +330,10 @@ gulp.task('watch', function () {
 
 gulp.task('webserver', function () {
 	browserSync({
-		// proxy: '127.0.0.1:8010',
-		server: {
-			baseDir: "./build"
-		},
+		proxy: '127.0.0.1:8010',
+		// server: {
+		// 	baseDir: "./build"
+		// },
 		tunnel: true,
 		host: 'localhost',
 		port: 9001,
@@ -371,8 +347,6 @@ gulp.task('build', [
 	'build-php',
 	'build-css',
 	'build-img',
-	'build-telegram-php',
-	'build-ya-php',
 	'generate-favicon',
 	'inject-favicon-markups',
 	'build-assets'
@@ -386,22 +360,4 @@ var options = {
 	uploadPath: "httpdocs/potylitcyn.ru"
 };
 
-gulp.task('deploy', function () {
-	var conn = ftp.create({
-		host: '37.140.192.121',
-		user: 'u0314320',
-		password: '0_kfQ_KZ',
-		remotePath: 'httpdocs/kvant.in',
-		parallel: 10,
-		log: gutil.log
-	});
-
-	// using base = '.' will transfer everything to /public_html correctly
-	// turn off buffering in gulp.src for best performnpmance
-
-	return gulp.src(path.build.all, {base: './build/', buffer: true})
-	// .pipe(conn.newerOrDifferentSize('httpdocs/kvant.in')); // only upload newer files
-		.pipe(conn.dest('httpdocs/kvant.in/'));
-});
-
-gulp.task('default', ['build', 'webserver', 'watch']);
+gulp.task('default', ['build', 'php', 'webserver', 'watch']);

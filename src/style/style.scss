@@ -1,6 +1,7 @@
 #main {
   width: 100vw;
   height: 100vh;
+  text-align: center;
 }
 
 #fizteh-radio-logo {
@@ -22,6 +23,18 @@
   height: 104px;
 }
 
+#current-track-info {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+  //cursor: pointer;
+  //width: 100%;
+  font-family: "macho", sans-serif;
+  text-align: center;
+}
+
 .play {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAdHLWhAAADNklEQVR4Xu3d4XHaQBQE4HdSA5TgVGCNVEDSQZwOnA6SDpIKTDowFcTpgBQAVgmUEBdwd5nLwFiDA5LsJ7R3t/4tnx77sSAjWRjhD3QCBno6DicEAn8SEIhA4AmAj8cGEQg8AfDx2CACgScAPh4bRCDwBMDHY4MIBJ4A+HhsEIHAEwAfjw0iEHgC4OOxQQQCTwB8PDYoZ6Cqqq7KsvzovV8YY3bW2l9t2/4BzwRqvEkaVFXVoizLnyLyoftovfcBZ+mc+0GoYc+DSYCapnkUkerUCIQahhO2Ugeq6/qLMeZuyAiE6k9pCqC1MeZ9/66ftyDU6bTUgZqm8WNw+B51Pi0ooMOonUat2rbdvRY8hd+DBDpq1b1z7nuuUPBAnVZlCRUNUK5Q0QHlBhUtUC5Q0QOlDpUMUKpQyQGlBpUsUCpQyQPFDpUNUKxQ2QHFBpUtUCxQ2QOhQxHo6JyE9z58KBtOc6wRTlcQ6LTC2lobTnPMCkWg/prMCkWgfqDDFrNAEWg40CxQBBoPdFEoAr0eqAv1eaprJgj0diAJVyE55z5NccRHIAWgsMQe6Z32NecEUgLaI33dbrdLxSX1r81+y5Wlmg9sprVWm83mVnPfbJBmmiIE0s1TdzXvPV/idCNVXe3JWnvFgwTVTNUWCzg3PMxWy1NvIe/9b+fcLf9Q1ctUZaU9zLcpWtMdkEdxI7kuBXMYi0ADgS4NQyBwGAL1AM3VmOOx+BL3EmplrQ1v/hD/G0ugZyAoGL7EgcMQSASyMXwPigQmxwZF0ZgcGxQlTA4NihomZaAkYFIESgomJaAkYVIAShomZqAsYGIEygomJqAsYdCBnrz34f7a9ygf+w88v6e+GdrphgPMUvv6MvXkLrSgOlBd16NvyywihDkBPgXQ4BubE6a/hupAYZd1XbfGmOszu2dj+m3+bTEJUPhyjaIoHv5zB3rCDISZ7Ciuu//w9TRFUdyIyEJEds65B775jxOapEHjRuDW5xIgEPjzg0AEAk8AfDw2iEDgCYCPxwYRCDwB8PHYIAKBJwA+HhtEIPAEwMdjgwgEngD4eGwQgcATAB+PDSIQeALg47FBBAJPAHy8vzmNrodSSs8eAAAAAElFTkSuQmCC");
 }
@@ -32,10 +45,9 @@
 
 #social-links {
   position: relative;
-  top: 50%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
 
   a {
     padding: 6px;

@@ -1,3 +1,5 @@
+try{Typekit.load({ async: true });}catch(e){}
+
 const volumeDelta = 0.00001;
 
 function play() {
@@ -5,8 +7,7 @@ function play() {
     player.volume = 0;
     player.play();
     var volume;
-    while (player.volume < 1)
-    {
+    while (player.volume < 1) {
         volume = player.volume + volumeDelta;
         player.volume = volume > 1 ? 1 : volume;
     }
@@ -15,8 +16,7 @@ function play() {
 function pause() {
     var player = document.getElementById("player");
     var volume;
-    while (player.volume > 0)
-    {
+    while (player.volume > 0) {
         volume = player.volume - volumeDelta;
         player.volume = volume < 0 ? 0 : volume;
     }
@@ -37,3 +37,10 @@ window.onload = function () {
         }
     }
 };
+
+<!-- script to refresh the current Artist Track -->
+$(document).ready(function () {
+    setInterval(function () {
+        $("#current-track-info").load("php/icecast-current-track.php");
+    }, 5 * 1000);
+});

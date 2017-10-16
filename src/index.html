@@ -13,10 +13,16 @@
 <audio id="player" src="http://radio.mipt.ru:8410/stream"></audio>
 
 <div id="main">
-    <!--<img id="fizteh-radio-logo" src="img/fizteh-radio-logo.jpg">-->
+<!--    <img id="fizteh-radio-logo" src="img/fizteh-radio-logo.jpg">-->
     <div id="play-button" class="play"></div>
+    <div id="current-track-info">
+        <?php
+            $now = include('php/icecast-current-track.php');
+            print $now;
+	    ?>
+    </div>
     <div id="social-links">
-        <a href="https://vk.com/fiztehjoke" target="_blank">
+        <a href="https://vk.com/fiztehradio" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 445 445" height="33">
                 <title>ИП Иван Потылицын Вконтакте</title>
                 <path class="vk-color-1"
@@ -54,5 +60,10 @@
         </a>
     </div>
 </body>
+<script src="https://use.typekit.net/yqy4lbp.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
 <script src="js/script.js"></script>
 </html>
