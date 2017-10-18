@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Физтех.Радио - нас слушают миллионы</title><style>#main {
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+        }
+        #listeners-number {
+            font-size: 500px;
+            font-family: "macho", sans-serif;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }</style></head><body><div id="main"><div id="listeners-number"></div></div></body><script src="https://use.typekit.net/yqy4lbp.js"></script><script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script><script>$(document).ready(function () {
+        $("#listeners-number").load("php/icecast-listeners-number.php");
+        setInterval(function () {
+            $("#listeners-number").load("php/icecast-listeners-number.php");
+        }, 5 * 1000);
+    });</script></html>

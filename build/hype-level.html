@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Физтех.Радио - нас слушают миллионы</title><style>#main {
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #listeners-number {
+            font-size: 500px;
+            font-family: "macho", sans-serif;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /*color: red;*/
+        }</style></head><body><div id="main"><div id="listeners-number"></div></div></body><script src="https://use.typekit.net/yqy4lbp.js"></script><script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script><script>function setNumberColor(color) {
+        $("#listeners-number").css("color", color);
+    }
+
+    function changelistenersNumber() {
+        var numberDiv = $("#listeners-number");
+        $.ajax({
+            url: "php/icecast-listeners-number.php"
+        }).done(function(resp) {
+            numberDiv.text(resp);
+
+            if (numberDiv.text() > 50)
+                setNumberColor("#FF0000");
+            else if (numberDiv.text() > 25)
+                setNumberColor("#F2A232");
+            else if (numberDiv.text() > 15)
+                setNumberColor("#EDE63C");
+            else if (numberDiv.text() > 5)
+                setNumberColor("#5CAA4F");
+            else
+                setNumberColor("#638094");
+        });
+    }
+
+    $(document).ready(function () {
+        changelistenersNumber();
+        setInterval(function () {
+            changelistenersNumber()
+        }, 2 * 1000);
+    });</script></html>
