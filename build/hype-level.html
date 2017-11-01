@@ -27,16 +27,20 @@
         }).done(function(resp) {
             numberDiv.text(resp);
 
-            if (numberDiv.text() > 50)
+            if (numberDiv.text() > 99)
                 setNumberColor("#FF0000");
-            else if (numberDiv.text() > 25)
+            else if (numberDiv.text() > 49)
+                setNumberColor("#F45743");
+            else if (numberDiv.text() > 24)
                 setNumberColor("#F2A232");
-            else if (numberDiv.text() > 15)
+            else if (numberDiv.text() > 14)
                 setNumberColor("#EDE63C");
-            else if (numberDiv.text() > 5)
+            else if (numberDiv.text() > 4)
                 setNumberColor("#5CAA4F");
-            else
+            else if (numberDiv.text() > 1)
                 setNumberColor("#638094");
+            else
+                setNumberColor("#616161");
         });
     }
 

@@ -1,6 +1,6 @@
 try{Typekit.load({ async: true });}catch(e){}
 
-const volumeDelta = 0.00001;
+const volumeDelta = 0.001;
 
 function play() {
     var player = document.getElementById("player");
