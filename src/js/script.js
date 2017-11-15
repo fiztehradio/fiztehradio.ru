@@ -1,27 +1,22 @@
+// Get Typekit fonts
 try{Typekit.load({ async: true });}catch(e){}
 
-const volumeDelta = 0.001;
+// Stream control functions
+var player = document.getElementById("player");
+
+// player.onerror = function() {
+//     alert("Error! Something went wrong");
+// };
 
 function play() {
-    var player = document.getElementById("player");
-    player.volume = 0;
+    player.volume = 1;
     player.play();
-    var volume;
-    while (player.volume < 1) {
-        volume = player.volume + volumeDelta;
-        player.volume = volume > 1 ? 1 : volume;
-    }
+    yaCounter46493418.reachGoal('PLAY');
 }
 
 function pause() {
-    var player = document.getElementById("player");
-    var volume;
-    while (player.volume > 0) {
-        volume = player.volume - volumeDelta;
-        player.volume = volume < 0 ? 0 : volume;
-    }
-
     player.pause();
+    yaCounter46493418.reachGoal('PAUSE');
 }
 
 window.onload = function () {
@@ -29,18 +24,19 @@ window.onload = function () {
 
         if (this.className === 'play') {
             this.className = 'pause';
-            setTimeout(play, 300);
+            play();
         }
         else {
             this.className = 'play';
-            setTimeout(pause, 300);
+            pause();
         }
     }
 };
 
-<!-- script to refresh the current Artist Track -->
+// Ыcript to refresh the current Artist Track
 $(document).ready(function () {
     setInterval(function () {
         $("#current-track-info").load("php/icecast-current-track.php");
     }, 5 * 1000);
 });
+
