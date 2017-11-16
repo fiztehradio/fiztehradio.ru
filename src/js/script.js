@@ -35,8 +35,10 @@ window.onload = function () {
 
 // Ыcript to refresh the current Artist Track
 $(document).ready(function () {
+    var trackInfo = $("#current-track-info");
+    trackInfo.load("php/icecast-current-track.php");
     setInterval(function () {
-        $("#current-track-info").load("php/icecast-current-track.php");
+        trackInfo.load("php/icecast-current-track.php");
     }, 5 * 1000);
 });
 

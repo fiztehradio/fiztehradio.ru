@@ -19,8 +19,9 @@ var php = require('gulp-connect-php');
 var path = {
 	src: { // Исходники
 		html: 'src/*.html',
-		js: 'src/js/script.js',
+		js: 'src/js/*.js',
 		style: 'src/style/**/*.scss',
+		css: 'src/style/**/*.css',
 		img: {
 			all: 'src/img/**/*.*',
 			team: 'src/img/team/**/*.*',
@@ -53,7 +54,7 @@ var path = {
 	},
 	watch: { // watch
 		html: 'src/*.html',
-		js: 'src/js/script.js',
+		js: 'src/js/*.js',
 		php: 'src/php/*.php',
 		style: 'src/style/*.scss',
 		img: 'src/img/**/*.*'
@@ -76,13 +77,21 @@ gulp.task('build-html', function () {
 		.pipe(reload({stream: true}));
 });
 
+gulp.task('build-scss', function () {
+    gulp.src(path.src.style)
+        .pipe(plumber())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(uglifycss())
+        .pipe(gulp.dest(path.build.css))
+        .pipe(reload({stream: true}));
+});
+
 gulp.task('build-css', function () {
-	gulp.src(path.src.style)
-		.pipe(plumber())
-		.pipe(sass().on('error', sass.logError))
-		.pipe(uglifycss())
-		.pipe(gulp.dest(path.build.css))
-		.pipe(reload({stream: true}));
+    gulp.src(path.src.css)
+        .pipe(plumber())
+        .pipe(uglifycss())
+        .pipe(gulp.dest(path.build.css))
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('build-js', function () {
@@ -315,8 +324,11 @@ gulp.task('watch', function () {
 		gulp.start('build-html');
 	});
 	gulp.watch([path.watch.style], function (event, cb) {
-		gulp.start('build-css');
+		gulp.start('build-scss');
 	});
+    gulp.watch([path.watch.css], function (event, cb) {
+        gulp.start('build-css');
+    });
 	gulp.watch([path.watch.js], function (event, cb) {
 		gulp.start('build-js');
 	});
@@ -345,7 +357,8 @@ gulp.task('build', [
 	'build-html',
 	'build-js',
 	'build-php',
-	'build-css',
+    'build-scss',
+    'build-css',
 	'build-img',
 	'generate-favicon',
 	'inject-favicon-markups',

@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Uni Sans Thin CAPS';
+    src: url('../fonts/UniSansThinCAPS.eot');
+    src: url('../fonts/UniSansThinCAPS.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/UniSansThinCAPS.woff') format('woff'),
+    url('../fonts/UniSansThinCAPS.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Uni Sans Heavy CAPS';
+    src: url('../fonts/UniSansHeavyCAPS.eot');
+    src: url('../fonts/UniSansHeavyCAPS.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/UniSansHeavyCAPS.woff') format('woff'),
+    url('../fonts/UniSansHeavyCAPS.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Uni Sans Heavy Italic CAPS';
+    src: url('../fonts/UniSansHeavyItalicCAPS.eot');
+    src: url('../fonts/UniSansHeavyItalicCAPS.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/UniSansHeavyItalicCAPS.woff') format('woff'),
+    url('../fonts/UniSansHeavyItalicCAPS.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Uni Sans Thin Italic CAPS';
+    src: url('../fonts/UniSansThinItalicCAPS.eot');
+    src: url('../fonts/UniSansThinItalicCAPS.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/UniSansThinItalicCAPS.woff') format('woff'),
+    url('../fonts/UniSansThinItalicCAPS.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
