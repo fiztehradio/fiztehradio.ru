@@ -92,34 +92,6 @@ body {
   }
 }
 
-#play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.2s ease;
-  cursor: pointer;
-
-  width: 150px;
-  height: 150px;
-  @media (max-width: 768px) {
-    width: 100px;
-    height: 100px;
-  }
-  @media (max-width: 480px) {
-    width: 70px;
-    height: 70px;
-  }
-  @media (max-height: 1100px) {
-    width: 100px;
-    height: 100px;
-  }
-  @media (max-height: 900px) {
-    width: 70px;
-    height: 70px;
-  }
-}
-
 #lines-background {
   position: absolute;
   width: 100%;
@@ -192,6 +164,36 @@ h1 {
   text-align: center;
   color: white;
 }
+
+
+#play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  width: 150px;
+  height: 150px;
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
+  @media (max-width: 480px) {
+    width: 70px;
+    height: 70px;
+  }
+  @media (max-height: 1100px) {
+    width: 100px;
+    height: 100px;
+  }
+  @media (max-height: 900px) {
+    width: 70px;
+    height: 70px;
+  }
+}
+
 
 .play {
   background-image: url("../img/play.png");
