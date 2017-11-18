@@ -11,6 +11,7 @@
     "browser-sync": "^2.18.7",
     "distribute-files": "^1.1.27",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
     "gulp-connect-php": "0.0.8",
     "gulp-deploy-ftp": "0.0.2",
     "gulp-favicons": "^2.2.7",

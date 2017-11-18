@@ -15,6 +15,7 @@ var rename = require('gulp-rename');
 var mergeStream = require('merge-stream');
 var uglifyInline = require('gulp-uglify-inline');
 var php = require('gulp-connect-php');
+const autoprefixer = require('gulp-autoprefixer');
 
 var path = {
 	src: { // Исходники
@@ -30,7 +31,8 @@ var path = {
 			works: 'src/img/works/**/*.*',
 			others: 'src/img/*.*'
 		},
-		php: 'src/php/*.php'
+		php: 'src/php/*.php',
+		fonts: 'src/fonts/**/*.*'
 	},
 	assets: { // Активы (от других разработчиков)
 		html: 'assets/*.html',
@@ -50,7 +52,8 @@ var path = {
 			works: 'build/img/works/',
 			others: 'build/img/'
 		},
-		php: 'build/php/'
+		php: 'build/php/',
+		fonts: 'src/fonts/'
 	},
 	watch: { // watch
 		html: 'src/*.html',
@@ -72,26 +75,34 @@ gulp.task('build-html', function () {
 	gulp.src(path.src.html)
 		.pipe(plumber())
 		.pipe(htmlmin({collapseWhitespace: true}))
-        // .pipe(uglifyInline({output: {comments: false}}))
+		// .pipe(uglifyInline({output: {comments: false}}))
 		.pipe(gulp.dest(path.build.html))
 		.pipe(reload({stream: true}));
 });
 
 gulp.task('build-scss', function () {
-    gulp.src(path.src.style)
-        .pipe(plumber())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(uglifycss())
-        .pipe(gulp.dest(path.build.css))
-        .pipe(reload({stream: true}));
+	gulp.src(path.src.style)
+		.pipe(plumber())
+		.pipe(sass().on('error', sass.logError))
+		// .pipe(autoprefixer({
+		// 	browsers: ['last 2 versions'],
+		// 	cascade: false
+		// }))
+		.pipe(uglifycss())
+		.pipe(gulp.dest(path.build.css))
+		.pipe(reload({stream: true}));
 });
 
 gulp.task('build-css', function () {
-    gulp.src(path.src.css)
-        .pipe(plumber())
-        .pipe(uglifycss())
-        .pipe(gulp.dest(path.build.css))
-        .pipe(reload({stream: true}));
+	gulp.src(path.src.css)
+		.pipe(plumber())
+		// .pipe(autoprefixer({
+		// 	browsers: ['last 2 versions'],
+		// 	cascade: false
+		// }))
+		.pipe(uglifycss())
+		.pipe(gulp.dest(path.build.css))
+		.pipe(reload({stream: true}));
 });
 
 gulp.task('build-js', function () {
@@ -99,6 +110,13 @@ gulp.task('build-js', function () {
 		.pipe(plumber())
 		.pipe(uglify())
 		.pipe(gulp.dest(path.build.js))
+		.pipe(reload({stream: true}));
+});
+
+gulp.task('build-fonts', function () {
+	gulp.src(path.src.fonts)
+		.pipe(plumber())
+		.pipe(gulp.dest(path.build.fonts))
 		.pipe(reload({stream: true}));
 });
 
@@ -315,8 +333,8 @@ gulp.task('build-assets', function () {
 		.pipe(reload({stream: true}));
 });
 
-gulp.task('php', function() {
-	php.server({ base: 'build', port: 8010, keepalive: true});
+gulp.task('php', function () {
+	php.server({base: 'build', port: 8010, keepalive: true});
 });
 
 gulp.task('watch', function () {
@@ -326,9 +344,9 @@ gulp.task('watch', function () {
 	gulp.watch([path.watch.style], function (event, cb) {
 		gulp.start('build-scss');
 	});
-    gulp.watch([path.watch.css], function (event, cb) {
-        gulp.start('build-css');
-    });
+	gulp.watch([path.watch.css], function (event, cb) {
+		gulp.start('build-css');
+	});
 	gulp.watch([path.watch.js], function (event, cb) {
 		gulp.start('build-js');
 	});
@@ -357,9 +375,10 @@ gulp.task('build', [
 	'build-html',
 	'build-js',
 	'build-php',
-    'build-scss',
-    'build-css',
+	'build-scss',
+	'build-css',
 	'build-img',
+	'build-fonts',
 	'generate-favicon',
 	'inject-favicon-markups',
 	'build-assets'
