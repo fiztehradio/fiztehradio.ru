@@ -337,24 +337,25 @@ gulp.task('php', function () {
 	php.server({base: 'build', port: 8010, keepalive: true});
 });
 
-gulp.task('watch', function () {
+gulp.task('watch-1', function () {
 	gulp.watch([path.watch.html], function (event, cb) {
 		gulp.start('build-html');
 	});
 	gulp.watch([path.watch.style], function (event, cb) {
 		gulp.start('build-scss');
 	});
-	gulp.watch([path.watch.css], function (event, cb) {
-		gulp.start('build-css');
-	});
-	gulp.watch([path.watch.js], function (event, cb) {
-		gulp.start('build-js');
-	});
+	// gulp.watch([path.watch.css], function (event, cb) {
+	// 	gulp.start('build-css');
+	// });
 	gulp.watch([path.watch.php], function (event, cb) {
 		gulp.start('build-php');
 	});
 	gulp.watch([path.watch.img], function (event, cb) {
 		gulp.start('build-img');
+	});
+	gulp.watch([path.watch.js], function (event, cb) {
+		console.log('seen');
+		gulp.start('build-js');
 	});
 });
 
@@ -392,4 +393,4 @@ var options = {
 	uploadPath: "httpdocs/potylitcyn.ru"
 };
 
-gulp.task('default', ['build', 'php', 'webserver', 'watch']);
+gulp.task('default', ['build', 'php', 'webserver', 'watch-1']);
