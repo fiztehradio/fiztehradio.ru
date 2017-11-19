@@ -178,31 +178,33 @@ body {
 		height: 320px;
 	}
 
-	animation: rotation 30s linear infinite;
-	-webkit-animation: webkit-rotation 30s linear infinite;
-	-moz-animation: moz-rotation 30s linear infinite;
-	-o-animation: o-rotation 30s linear infinite;
+	//animation: rotation 30s linear infinite;
+	//-webkit-animation: webkit-rotation 30s linear infinite;
+	//-moz-animation: moz-rotation 30s linear infinite;
+	//-o-animation: o-rotation 30s linear infinite;
 
 	transform-origin: top left;
-	@keyframes rotation {
-		0% {
-			transform: rotate(0deg) translate(-50%, -50%);
-		}
-		100% {
-			transform: rotate(360deg) translate(-50%, -50%);
+
+	$keyframeSlug: "rotation";
+	$sectorsCount: 360;
+	@for $i from 0 through ($sectorsCount - 1) {
+		@keyframes #{$keyframeSlug}-#{$i * 360 / $sectorsCount} {
+			0% {
+				transform: rotate(#{$i * 360 / $sectorsCount}deg) translate(-50%, -50%);
+			}
+			100% {
+				transform: rotate(#{360 + $i * 360 / $sectorsCount}deg) translate(-50%, -50%);
+			}
 		}
 	}
 
-	@-webkit-keyframes webkit-rotation {
-		0% {
-			-webkit-transform: rotate(0deg) translate(-50%, -50%);
-		}
-		100% {
-			-webkit-transform: rotate(360deg) translate(-50%, -50%);
-		}
-	}
-
-	animation-play-state: paused;
+	//&.paused-animation {
+	//	-webkit-animation-play-state: paused;
+	//}
+	//
+	//&.running-animation {
+	//	-webkit-animation-play-state: running;
+	//}
 
 	&.night-color-scheme {
 		filter: invert(0%);
@@ -347,8 +349,9 @@ h1 {
 	display: inline-block;
 	width: 60px;
 	height: 34px;
-	bottom: 0;
-	transform: translate(-50%, -50%);
+	bottom: 20px;
+	left: 20px;
+	//transform: translate(-50%, -50%);
 }
 
 .switch input {

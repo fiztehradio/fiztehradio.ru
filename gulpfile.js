@@ -84,10 +84,10 @@ gulp.task('build-scss', function () {
 	gulp.src(path.src.style)
 		.pipe(plumber())
 		.pipe(sass().on('error', sass.logError))
-		// .pipe(autoprefixer({
-		// 	browsers: ['last 2 versions'],
-		// 	cascade: false
-		// }))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
 		.pipe(uglifycss())
 		.pipe(gulp.dest(path.build.css))
 		.pipe(reload({stream: true}));
@@ -96,10 +96,10 @@ gulp.task('build-scss', function () {
 gulp.task('build-css', function () {
 	gulp.src(path.src.css)
 		.pipe(plumber())
-		// .pipe(autoprefixer({
-		// 	browsers: ['last 2 versions'],
-		// 	cascade: false
-		// }))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
 		.pipe(uglifycss())
 		.pipe(gulp.dest(path.build.css))
 		.pipe(reload({stream: true}));
