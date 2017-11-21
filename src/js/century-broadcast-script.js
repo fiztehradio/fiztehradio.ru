@@ -21,8 +21,7 @@ function pause() {
 	yaCounter46493418.reachGoal('PAUSE');
 }
 
-function swapElementClasses(e, from, to)
-{
+function swapElementClasses(e, from, to) {
 	e.removeClass(from);
 	e.addClass(to);
 }
@@ -34,8 +33,7 @@ var angle = 0;
 //-moz-animation: moz-rotation 30s linear infinite;
 //-o-animation: o-rotation 30s linear infinite;
 
-function startPlanetRotation()
-{
+function startPlanetRotation() {
 	var planet = $('#mipt-planet');
 
 	planet.css("animation-duration", "30s");
@@ -56,8 +54,7 @@ function startPlanetRotation()
 	planet.css("animation-name", "rotation-" + Math.floor(angle));
 }
 
-function stopPlanetRotation()
-{
+function stopPlanetRotation() {
 	var planet = $('#mipt-planet');
 	angle = getCurrentRotationFixed("mipt-planet");
 
@@ -72,8 +69,7 @@ function stopPlanetRotation()
 	planet.css("-o-animation", "none");
 }
 
-function updateUtcTime()
-{
+function updateUtcTime() {
 	var currentTime = new Date().getTime();
 	utcTime = moment(currentTime).utc().format("HH:mm:ss");
 }
@@ -159,21 +155,19 @@ function setColorSchemeByTime() {
 
 	var delta;
 
-	if (utcTime > sunriseTime && utcTime < sunsetTime)
-	{
+	if (utcTime > sunriseTime && utcTime < sunsetTime) {
 		console.log("Switching to day color scheme");
 		$("#temp").css("color", "blue");
 		setColorScheme("day");
 
-		delta = moment.utc(moment(sunsetTime,"HH:mm:ss").diff(moment(utcTime,"HH:mm:ss"))).format("HH:mm:ss");
+		delta = moment.utc(moment(sunsetTime, "HH:mm:ss").diff(moment(utcTime, "HH:mm:ss"))).format("HH:mm:ss");
 	}
-	else
-	{
+	else {
 		console.log("Switching to night color scheme");
 		$("#temp").css("color", "red");
 		setColorScheme("night");
 
-		delta = moment.utc(moment(sunriseTime,"HH:mm:ss").diff(moment(utcTime,"HH:mm:ss"))).format("HH:mm:ss");
+		delta = moment.utc(moment(sunriseTime, "HH:mm:ss").diff(moment(utcTime, "HH:mm:ss"))).format("HH:mm:ss");
 	}
 
 	var deltaSeconds = moment.duration(delta).as('seconds');
@@ -197,18 +191,18 @@ function positionReceived(position) {
 	var link = "https://api.sunrise-sunset.org/json?lat=" + position.coords.latitude +
 		"&lng=" + position.coords.longitude;
 
-	$.getJSON( link, function( data ) {
+	$.getJSON(link, function (data) {
 
 		// sunriseTime = moment(data.results.sunrise, ["hh:mm:ss A"]).format("HH:mm:ss");
 		// sunsetTime = moment(data.results.sunset, ["hh:mm:ss A"]).format("HH:mm:ss");
 
 		setColorSchemeByTime();
 	})
-		// .error(function() { setColorSchemeByTime(); });
+	// .error(function() { setColorSchemeByTime(); });
 }
 
 
-function getCurrentRotationFixed( elid ) {
+function getCurrentRotationFixed(elid) {
 	var el = document.getElementById(elid);
 	var st = window.getComputedStyle(el, null);
 	var tr = st.getPropertyValue("-webkit-transform") ||
@@ -218,7 +212,7 @@ function getCurrentRotationFixed( elid ) {
 		st.getPropertyValue("transform") ||
 		"fail...";
 
-	if( tr !== "none") {
+	if (tr !== "none") {
 		// console.log('Matrix: ' + tr);
 
 		var values = tr.split('(')[1];
@@ -229,7 +223,7 @@ function getCurrentRotationFixed( elid ) {
 		var c = values[2];
 		var d = values[3];
 
-		var scale = Math.sqrt(a*a + b*b);
+		var scale = Math.sqrt(a * a + b * b);
 
 		// First option, don't check for negative result
 		// Second, check for the negative result
@@ -238,10 +232,10 @@ function getCurrentRotationFixed( elid ) {
 		 var angle = Math.round( radians * (180/Math.PI));
 		 /*/
 		var radians = Math.atan2(b, a);
-		if ( radians < 0 ) {
+		if (radians < 0) {
 			radians += (2 * Math.PI);
 		}
-		return Math.round( radians * (180/Math.PI));
+		return Math.round(radians * (180 / Math.PI));
 		/**/
 
 	} else {
