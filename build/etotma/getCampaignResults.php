@@ -1,6 +1,6 @@
 <?php
 
-$paymentsDb = new mysqli("potylitcyn.ru", "u0309_etotma_loader", "give_me_data_please", "u0309421_love_and_space_database");
+$paymentsDb = new mysqli("37.140.192.141", "u0309_loader", "give_me_data_please", "u0309421_love_and_space_database");
 if ($paymentsDb->connect_error) {
 	die("Connection failed: " . $paymentsDb->connect_error);
 }
