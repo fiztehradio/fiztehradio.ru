@@ -264,9 +264,9 @@ h1 {
 }
 
 #timer {
-	font-family: "Times New Roman";
+	font-family: "macho", sans-serif;
 	font-size: 20px;
-	font-decoration: none;
+	text-decoration: none;
 	&.night-color-scheme {
 		color: #e6e6e6;
 	}
@@ -276,6 +276,8 @@ h1 {
 }
 
 #current-track-wrapper {
+	font-family: "macho", sans-serif;
+	font-weight: 900;
 	height: 100%;
 }
 
