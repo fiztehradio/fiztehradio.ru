@@ -28,10 +28,34 @@ function swapElementClasses(e, from, to) {
 
 var angle = 0;
 
-//animation: rotation 30s linear infinite;
-//-webkit-animation: webkit-rotation 30s linear infinite;
-//-moz-animation: moz-rotation 30s linear infinite;
-//-o-animation: o-rotation 30s linear infinite;
+// Set the date we're counting down to
+var countDownDate = new Date("Nov 26, 2017 12:00:00").getTime();
+
+// Update the count down every 1 second
+var countdown = setInterval(function() {
+
+	// Get todays date and time
+	var now = new Date().getTime();
+
+	// Find the distance between now an the count down date
+	var distance = countDownDate - now;
+
+	// Time calculations for days, hours, minutes and seconds
+	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+	// Display the result in the element with id="demo"
+	document.getElementById("timer").innerHTML = "До начала Эфира Века: " + days + " дня " + hours + "ч "
+		+ minutes + "м " + seconds + "с";
+
+	// If the count down is finished, write some text
+	if (distance < 0) {
+		clearInterval(countdown);
+		document.getElementById("timer").innerHTML = "Мы несесм Аш Ню!";
+	}
+}, 1000);
 
 function startPlanetRotation() {
 	var planet = $('#mipt-planet');
