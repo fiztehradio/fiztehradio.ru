@@ -3,9 +3,9 @@ var chart;
 $(document).ready(function () {
 
 	changelistenersNumber();
-	// setInterval(function () {
-	// changelistenersNumber()
-	// }, 2 * 1000);
+	setInterval(function () {
+	changelistenersNumber()
+	}, 2 * 1000);
 
 	// AmCharts.makeChart( "stats-chart", {
 	// 	"type": "stock",
