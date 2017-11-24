@@ -29,7 +29,7 @@ function swapElementClasses(e, from, to) {
 var angle = 0;
 
 // Set the date we're counting down to
-var countDownDate = new Date("Nov 26, 2017 12:00:00").getTime();
+var countDownDate = new Date("Nov 25, 2017 12:00:00").getTime();
 
 // Update the count down every 1 second
 var countdown = setInterval(function() {
