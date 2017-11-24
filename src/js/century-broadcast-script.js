@@ -47,8 +47,8 @@ var countdown = setInterval(function() {
 	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 	// Display the result in the element with id="demo"
-	document.getElementById("timer").innerHTML = "До начала Эфира Века: " + days + " дня " + hours + "ч "
-		+ minutes + "м " + seconds + "с";
+	document.getElementById("timer").innerHTML = "До начала Эфира Века: <b>" + days + (days == 1 ? "</b> день <b>" : "</b> дней <b>") + hours + "</b>ч <b>"
+		+ minutes + "</b>м <b>" + seconds + "</b>с";
 
 	// If the count down is finished, write some text
 	if (distance < 0) {
