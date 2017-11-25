@@ -268,10 +268,10 @@ h1 {
 	font-size: 20px;
 	text-decoration: none;
 	&.night-color-scheme {
-		color: #e6e6e6;
+		color: #e6e6e6; !important;
 	}
 	&.day-color-scheme {
-		color: #4c4b4b;
+		color: #4c4b4b; !important;
 	}
 }
 
