@@ -34,6 +34,9 @@ $(document).ready(function () {
 			}, {
 				fromField: "vkListenersNumber",
 				toField: "vk"
+			}, {
+				fromField: "totalListeners",
+				toField: "totalListeners"
 			}],
 
 			categoryField: "timestamp",
@@ -77,6 +80,21 @@ $(document).ready(function () {
 			legend: {},
 
 			stockGraphs: [{
+				id: "totalListeners",
+				valueField: "totalListeners",
+				title: "TOTAL",
+				useDataSetColors: false,
+				fillAlphas: 0,
+				lineAlpha: 0.8,
+				lineThickness: 3,
+				lineColor: "#666666",
+				bullet: "round",
+				bulletBorderAlpha: 1,
+				bulletColor: "#FFFFFF",
+				useLineColorForBulletBorder: true,
+				hideBulletsCount: 50
+				// lineAlpha: 0
+			}, {
 				id: "graph1",
 				valueField: "website",
 				type: "line",
@@ -121,10 +139,6 @@ $(document).ready(function () {
 				bulletColor: "#FFFFFF",
 				useLineColorForBulletBorder: true,
 				hideBulletsCount: 50
-			}, {
-				id: "totalListeners",
-				valueField: "totalListeners",
-				lineAlpha: 0
 			}],
 
 			zoomOutOnDataUpdate: false
@@ -145,7 +159,7 @@ $(document).ready(function () {
 		},
 
 		chartScrollbarSettings: {
-			graph: "graph1",
+			graph: "totalListeners",
 			graphType: "line",
 			scrollbarHeight: 100
 		},
@@ -210,16 +224,21 @@ function changelistenersNumber() {
 	var websiteNumber = $("#website-listeners-number");
 	var youtubeNumber = $("#youtube-listeners-number");
 	var vkNumber = $("#vk-listeners-number");
+	var totalNumber = $("#total-listeners-number");
 
 	$.ajax({
 		url: "php/icecast-listeners-number.php"
 	}).done(function (resp) {
-		console.log(resp[0]);
+		// console.log(resp[0]);
 		websiteNumber.text(resp[0].websiteListenersNumber);
 		youtubeNumber.text(resp[0].youtubeListenersNumber);
 		vkNumber.text(resp[0].vkListenersNumber);
+		totalNumber.text(parseInt(resp[0].websiteListenersNumber) +
+			parseInt(resp[0].youtubeListenersNumber) +
+			parseInt(resp[0].vkListenersNumber));
 		setNumberDivColor(websiteNumber);
 		setNumberDivColor(youtubeNumber);
 		setNumberDivColor(vkNumber);
+		setNumberDivColor(totalNumber);
 	});
 }
