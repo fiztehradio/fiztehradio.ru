@@ -151,7 +151,7 @@ $(document).ready(function () {
 		categoryAxesSettings: {
 			dashLength: 5,
 			minPeriod: "ss",
-			maxSeries: -1
+			maxSeries: 500
 		},
 
 		valueAxesSettings: {
