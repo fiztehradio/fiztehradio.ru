@@ -1,0 +1,41 @@
+#gallery {
+  position: absolute;
+  z-index: -1;
+  top: 0%;
+  left: 10%;
+  width: 80%;
+  height: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  outline: solid 2px green;
+
+  .photo {
+    width: 15vw;
+    height: auto;
+
+    display: block;
+
+    outline: solid 2px red;
+
+    transition: visibility 0s, opacity 0.5s linear;
+    opacity: 1;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    span {
+      color: white;
+      font-family: "Uni Sans Thin CAPS";
+      font-size: 32px;
+    }
+  }
+
+  .photo:hover {
+    opacity: 0.5;
+  }
+}
