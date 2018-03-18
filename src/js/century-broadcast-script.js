@@ -31,6 +31,8 @@ var angle = 0;
 function startPlanetRotation() {
 	var planet = $('#mipt-planet');
 
+	if (!planet.length) return;
+
 	planet.css("animation-duration", "30s");
 	planet.css("-webkit-animation-duration", "30s");
 	planet.css("-moz-animation-duration", "30s");
@@ -51,6 +53,9 @@ function startPlanetRotation() {
 
 function stopPlanetRotation() {
 	var planet = $('#mipt-planet');
+
+	if (!planet.length) return;
+
 	angle = getCurrentRotationFixed("mipt-planet");
 
 	planet.css("transform", "rotate(" + angle + "deg) translate(-50%, -50%)");
