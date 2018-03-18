@@ -40,6 +40,14 @@
   .container .photo:nth-child(even) img {
     border: solid 5px #5f968e;
   }
+  .container .photo:nth-child(odd) {
+    background-color: #e05858;
+  }
+  .container .photo:nth-child(even) {
+    background-color: #5f968e;
+  }
+
+
 
   .photo {
     order: 0;
@@ -59,9 +67,6 @@
       width: 100%;
       height: 100%;
     }
-
-    background-color: #5f968e;
-
   }
 
   .photo.text {
@@ -78,19 +83,29 @@
       font-size: 32px;
     }
   }
-
-  .photo:hover{
-    // width: 0;
-    // visibility: hidden;
-
-    :first-child{
-      transform: rotateY(180deg);
-    }
-  }
-
 }
 
-@media (min-aspect-ratio: 9/5) {
+// $ms: (17 9 7 5 3 3);
+// $ns: (5 5 5 5 5 7);
+// $ratios: (17/5 9/5 7/5 5/5 3/5 3/7);
+//
+// @each $aspect in $ratios {
+//   @media (min-aspect-ratio: $aspect) {
+//     #gallery {
+//       .photo:nth-child( nth($ms, $i) ) ~ .photo {
+//         display: none;
+//       }
+//       .photo:nth-child(23) ~ .photo {
+//         order: 2;
+//       }
+//       .photo {
+//         width: calc(100% / $n);
+//       }
+//     }
+//   }
+// }
+
+@media (min-aspect-ratio: 9/5) { // M = 9, N = 5
   #gallery {
     .photo:nth-child(45) ~ .photo {
       display: none;
