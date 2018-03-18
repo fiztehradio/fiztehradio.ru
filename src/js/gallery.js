@@ -34,14 +34,8 @@ $(function () {
     swapWithRandom(gallery, elem)
   })
 
-  // gallery.click(function (event) {
-  //   var elem = $(this).get(0)
-  //   console.log('click', elem)
-  //   swapWithRandom(gallery.filter(':hidden'), elem)
-  // })
-
   var ticker = setInterval(function () {
     swapRandomElementsFrom(gallery.filter(':hidden'), gallery.filter(':visible'))
-  }, 2000)
+  }, 300)
 
 })
