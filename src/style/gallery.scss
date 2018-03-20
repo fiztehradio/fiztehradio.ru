@@ -1,3 +1,8 @@
+$primary: #EC9787;
+$secondary: #EC9787;
+$accent: #0E3A53;
+$linewidth: 3px;
+
 #gallery {
   margin: 0; padding: 0;
   position: absolute;
@@ -35,16 +40,16 @@
   }
 
   .container .photo:nth-child(odd) img {
-    border: solid 5px #e05858;
+    border: solid $linewidth $primary;
   }
   .container .photo:nth-child(even) img {
-    border: solid 5px #5f968e;
+    border: solid $linewidth $secondary;
   }
   .container .photo:nth-child(odd) {
-    background-color: #e05858;
+    background-color: $primary;
   }
   .container .photo:nth-child(even) {
-    background-color: #5f968e;
+    background-color: $secondary;
   }
 
 
@@ -129,15 +134,15 @@
     }
 
     .photo:nth-child(18) ~ .photo:nth-child(even) {
-      background-color: #e05858;
+      background-color: $primary;
       img {
-        border: solid 5px #e05858;
+        border: solid $linewidth $primary;
       }
     }
     .photo:nth-child(18) ~ .photo:nth-child(odd) {
-      background-color: #5f968e;
+      background-color: $secondary;
       img {
-        border: solid 5px #5f968e;
+        border: solid $linewidth $secondary;
       }
     }
 
@@ -157,15 +162,15 @@
     }
 
     .photo:nth-child(13) ~ .photo:nth-child(even) {
-      background-color: #e05858;
+      background-color: $primary;
       img {
-        border: solid 5px #e05858;
+        border: solid $linewidth $primary;
       }
     }
     .photo:nth-child(13) ~ .photo:nth-child(odd) {
-      background-color: #5f968e;
+      background-color: $secondary;
       img {
-        border: solid 5px #5f968e;
+        border: solid $linewidth $secondary;
       }
     }
 
@@ -185,15 +190,15 @@
     }
 
     .photo:nth-child(8) ~ .photo:nth-child(even) {
-      background-color: #e05858;
+      background-color: $primary;
       img {
-        border: solid 5px #e05858;
+        border: solid $linewidth $primary;
       }
     }
     .photo:nth-child(8) ~ .photo:nth-child(odd) {
-      background-color: #5f968e;
+      background-color: $secondary;
       img {
-        border: solid 5px #5f968e;
+        border: solid $linewidth $secondary;
       }
     }
 
@@ -213,15 +218,15 @@
     }
 
     .photo:nth-child(11) ~ .photo:nth-child(even) {
-      background-color: #e05858;
+      background-color: $primary;
       img {
-        border: solid 5px #e05858;
+        border: solid $linewidth $primary;
       }
     }
     .photo:nth-child(11) ~ .photo:nth-child(odd) {
-      background-color: #5f968e;
+      background-color: $secondary;
       img {
-        border: solid 5px #5f968e;
+        border: solid $linewidth $secondary;
       }
     }
 
