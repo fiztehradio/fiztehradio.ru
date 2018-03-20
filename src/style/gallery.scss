@@ -118,6 +118,20 @@ $linewidth: 3px;
     .photo:nth-child(23) ~ .photo {
       order: 2;
     }
+
+    .photo:nth-child(23) ~ .photo:nth-child(even) {
+      background-color: $primary;
+      img {
+        border: solid $linewidth $primary;
+      }
+    }
+    .photo:nth-child(23) ~ .photo:nth-child(odd) {
+      background-color: $secondary;
+      img {
+        border: solid $linewidth $secondary;
+      }
+    }
+
     .photo {
       width: 11%;
     }
