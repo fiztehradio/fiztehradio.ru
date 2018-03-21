@@ -3,6 +3,13 @@ $secondary: #EC9787;
 $accent: #0E3A53;
 $linewidth: 3px;
 
+body {
+  &.day-color-scheme,
+  &.night-color-scheme {
+    background-color: $primary;
+	}
+}
+
 #gallery {
   margin: 0; padding: 0;
   position: absolute;
