@@ -105,6 +105,7 @@ body {
     }
 
     &.current-track-block {
+      order: 1;
       font-size: 2vh;
     }
   }

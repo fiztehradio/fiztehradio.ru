@@ -15,6 +15,18 @@
 <audio id="player" src="http://radio.mipt.ru:8410/stream"></audio>
 <div id="gallery">
 	<div class="container">
+
+		<div class="photo text logo"><span>ФИЗТЕХ<br>.РАДИО</span></div>
+
+		<div class="photo text current-track-block">
+			<span class="current-track auto-size">
+				<?php
+				$now = include('php/icecast-current-track.php');
+				print $now;
+				?>
+			</span>
+		</div>
+
 		<div class="photo play-container">
 			<div id="play-button" class="play"></div>
 		</div>
@@ -30,15 +42,6 @@
 		<div class="photo"><img src="img/botay-photos/BOTAY-8.jpg" /></div>
 		<div class="photo"><img src="img/botay-photos/BOTAY-9.jpg" /></div>
 
-		<div class="photo text current-track-block">
-			<span class="current-track auto-size">
-				<?php
-				$now = include('php/icecast-current-track.php');
-				print $now;
-				?>
-			</span>
-		</div>
-
 		<div class="photo"><img src="img/botay-photos/BOTAY-10.jpg" /></div>
 		<div class="photo"><img src="img/botay-photos/BOTAY-11.jpg" /></div>
 		<div class="photo"><img src="img/botay-photos/BOTAY-12.jpg" /></div>
@@ -49,8 +52,6 @@
 		<div class="photo"><img src="img/botay-photos/BOTAY-17.jpg" /></div>
 		<div class="photo"><img src="img/botay-photos/BOTAY-18.jpg" /></div>
 		<div class="photo"><img src="img/botay-photos/BOTAY-19.jpg" /></div>
-
-		<div class="photo text logo"><span>ФИЗТЕХ<br>.РАДИО</span></div>
 
 		<div class="photo text social">
 			<a href="https://vk.com/fiztehradio" target="_blank"><i class="fab fa-vk"></i></a>
