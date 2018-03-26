@@ -5,10 +5,7 @@ $linewidth: 3px;
 
 
 body {
-  &.day-color-scheme,
-  &.night-color-scheme {
-    background-color: $primary;
-	}
+  background-color: $primary;
 }
 
 #gallery {
