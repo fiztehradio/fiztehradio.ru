@@ -14,7 +14,7 @@ var getRandom = function(collection) {
 var swapWithRandom = function (collection, elem) {
   var randomElem = getRandom(collection)
 
-  console.log('swap', elem, randomElem)
+  // console.log('swap', elem, randomElem)
   swap(elem, randomElem)
 }
 
@@ -22,16 +22,22 @@ var swapRandomElementsFrom = function (collectionFrom, collectionTo) {
   var randomElemFrom = getRandom(collectionFrom)
   var randomElemTo = getRandom(collectionTo)
 
-  console.log('swap', randomElemFrom, randomElemTo)
+  // console.log('swap', randomElemFrom, randomElemTo)
   swap(randomElemFrom, randomElemTo)
   // swapWithRandom(collectionTo, randomElem)
 }
 
 $(function () {
-  var gallery = $('#gallery .container').find('.photo').not('.play-container')
+  var gallery = $('#gallery .container').find('.photo')
+                  .not('.play-container').not('.text')
 
   gallery.each(function (index, elem) {
     swapWithRandom(gallery, elem)
+  })
+
+  $('#gallery .container').find('.photo.text').each(function (index, elem) {
+    var middleLine = gallery.filter(':visible')
+    swapWithRandom(middleLine, elem)
   })
 
   var ticker = setInterval(function () {

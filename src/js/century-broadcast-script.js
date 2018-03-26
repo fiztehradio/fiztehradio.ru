@@ -103,12 +103,11 @@ $(document).ready(function () {
 	player = document.getElementById("player");
 
 	// Запуск периодического обновления названия играющего трека
-	var trackInfo = $("#current-track-info");
+	var trackInfo = $(".current-track");
 	trackInfo.load("php/icecast-current-track.php");
 	setInterval(function () {
 		trackInfo.load("php/icecast-current-track.php");
 	}, 5 * 1000);
-
 
 	// Определение местоположения
 	setColorSchemeByLocation();
