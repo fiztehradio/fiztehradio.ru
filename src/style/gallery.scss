@@ -100,6 +100,10 @@ body {
       white-space: normal;
     }
 
+    &.middle {
+      order: 1;
+    }
+
     &.logo {
       font-size: 3vh;
     }
@@ -109,7 +113,6 @@ body {
     }
 
     &.current-track-block {
-      order: 1;
       font-size: 2vh;
     }
   }
