@@ -107,6 +107,12 @@ $(document).ready(function () {
 	trackInfo.load("php/icecast-current-track.php");
 	setInterval(function () {
 		trackInfo.load("php/icecast-current-track.php");
+
+		if ( trackInfo.text().length > 75 ) {
+			trackInfo.css('font-size', '1.5vh')
+		} else {
+			trackInfo.css('font-size', '2vh')
+		}
 	}, 5 * 1000);
 
 	// Определение местоположения
