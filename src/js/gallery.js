@@ -36,7 +36,8 @@ $(function () {
   })
 
   $('#gallery .container').find('.photo.text')
-    .not('.current-track-block').not('.play-container').each(function (index, elem) {
+    .not('.current-track-block').not('.play-container').not('.middle')
+    .each(function (index, elem) {
     var middleLine = gallery.filter(':visible')
     swapWithRandom(middleLine, elem)
   })
